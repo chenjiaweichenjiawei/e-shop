@@ -1,0 +1,30 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: product-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.255.132
+        username: nacos
+        password: nacos
+  datasource:
+    url: jdbc:mysql://192.168.255.132:3306/gulimall_pms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+  redis:
+    host: 192.168.255.132
+    port: 6379
+    password: 123456
+  cache:
+    type: redis
+    redis:
+      time-to-live: 100000
+      key-prefix: product-service
+my:
+  thread:
+    core-size: 20
+    max-size: 200
+    keep-alive-time: 10

@@ -1,0 +1,51 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.255.132
+        username: nacos
+        password: nacos
+    gateway:
+      routes:
+        - id: product-service-router
+          uri: lb://product-service
+          predicates:
+            - Path=/product-service/**
+          filters:
+            - RewritePath=/product-service/?(?<segment>.*), /$\{segment}
+        - id: third-service-router
+          uri: lb://third-service
+          predicates:
+            - Path=/third-service/**
+          filters:
+            - RewritePath=/third-service/?(?<segment>.*), /$\{segment}
+        - id: member-service-router
+          uri: lb://member-service
+          predicates:
+            - Path=/member-service/**
+          filters:
+            - RewritePath=/member-service/?(?<segment>.*), /$\{segment}
+        - id: ware-service-router
+          uri: lb://ware-service
+          predicates:
+            - Path=/ware-service/**
+          filters:
+            - RewritePath=/ware-service/?(?<segment>.*), /$\{segment}
+        - id: gulimalll_host_router
+          uri: lb://product-service
+          predicates:
+            - Host=**.gulimall.com,gulimall.com
+      discovery:
+        locator:
+          enabled: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowedOriginPatterns: "*"
+            allowCredentials: true

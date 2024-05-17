@@ -1,0 +1,20 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: third-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.255.132
+        username: nacos
+        password: nacos
+    alicloud:
+      access-key:
+      secret-key:
+      oss:
+        endpoint:
+        bucket:
+    util:
+      enabled: false
+

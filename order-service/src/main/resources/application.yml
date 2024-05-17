@@ -1,0 +1,18 @@
+server:
+  port: 9004
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.255.132
+        username: nacos
+        password: nacos
+      config:
+        import-check:
+          enabled: false
+  redis:
+    host: 192.168.255.132
+    port: 6379
+    password: 123456
